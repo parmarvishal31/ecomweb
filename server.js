@@ -19,7 +19,7 @@ connectdb()
 app.use(express.json())
 app.use(morgan('dev'))
 app.use(cors())
-app.use(express.static(path.join(__dirname, './client/build')))
+app.use(express.static(path.resolve(__dirname, './client/build')))
 // routes
 app.use('/api/v1/auth', routes)
 app.use("/api/v1/category", categoryRoutes);
@@ -27,7 +27,7 @@ app.use("/api/v1/product", productRoutes);
 
 
 app.use('*', function (req, res) {
-    res.sendFile(path.join(__dirname, './client/build/index.html'))
+    res.sendFile(path.resolve(__dirname, './client/build/index.html'))
 })
 
 // port
